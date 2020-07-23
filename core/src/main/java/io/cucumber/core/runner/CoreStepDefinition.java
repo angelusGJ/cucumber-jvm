@@ -1,6 +1,7 @@
 package io.cucumber.core.runner;
 
 import io.cucumber.core.backend.ParameterInfo;
+import io.cucumber.core.backend.SourceReference;
 import io.cucumber.core.backend.StepDefinition;
 import io.cucumber.core.gherkin.Step;
 import io.cucumber.core.stepexpression.Argument;
@@ -9,6 +10,7 @@ import io.cucumber.core.stepexpression.StepExpression;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static java.util.Objects.requireNonNull;
@@ -55,6 +57,10 @@ final class CoreStepDefinition {
 
     UUID getId() {
         return id;
+    }
+
+    Optional<SourceReference> getDefinitionLocation() {
+        return stepDefinition.getSourceReference();
     }
 
 }
